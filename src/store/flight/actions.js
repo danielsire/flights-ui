@@ -3,14 +3,14 @@ import axios from 'axios'
 
 const { API } = process.env
 
-const getUrl = (status) => /all/i.test(status) ?
-    `${API}/flights` :
-    `${API}/flights/search/status?q=${status}`
+const getUrl = (searchTerm) =>
+    `${API}/flights/search/by-flight-code?flightCode=${searchTerm}`
 
 export const search = async({ commit }, data) => {
 
-    const { status } = data
-    const response = await axios.get(getUrl(status))
+    const { searchTerm } = data
+    const headers = { "Access-Control-Allow-Origin": "*" }
+    const response = await axios.get(getUrl(searchTerm), { headers })
 
     const flights = get('data._embedded.flights', response)
     commit('flights', flights)

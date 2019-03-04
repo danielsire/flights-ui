@@ -6,6 +6,7 @@ import FlightDetail from '../components/flight/detail.vue'
 Vue.use(VueRouter)
 
 const routes = [
+    { path: '/', component: FlightList },
     { path: '/flights', component: FlightList },
     { path: '/flights/:id', component: FlightDetail }
 ]

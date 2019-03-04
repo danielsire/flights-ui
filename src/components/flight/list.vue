@@ -15,10 +15,11 @@
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
-            <td><router-link :to="`/flights/${ props.item.id }`">{{ props.item.departure.code }}</router-link></td>
-            <td>{{ props.item.departureTime | formatDate }}</td>
-            <td>{{ props.item.arrival.code }}</td>
-            <td>{{ props.item.scheduledTime | formatDate }}</td>
+            <td><router-link :to="`/flights/${ props.item.id }`">{{ props.item.flightCode }}</router-link></td>
+            <td>{{ props.item.departureAirport }}</td>
+            <td>{{ props.item.departureDate | formatDate }}</td>
+            <td>{{ props.item.arrivalAirport }}</td>
+            <td>{{ props.item.arrivalDate | formatDate }}</td>
           </template>
         </v-data-table>
       </v-flex>
@@ -42,6 +43,7 @@
     data() {
       return  {
         headers: [
+          { align: 'center', sortable: false, text: 'Flight Code' },
           { align: 'center', sortable: false, text: 'Departure Airport' },
           { align: 'center', sortable: false, text: 'Departure Time' },
           { align: 'center', sortable: false, text: 'Arrival Airport' },

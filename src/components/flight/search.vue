@@ -1,11 +1,13 @@
 <template>
   <v-flex xs3>
-    <v-select
-      :items="items"
-      :value="defaultValue"
-      @change="search"
-      label="Status"
-    ></v-select>
+    <v-text-field
+      append-outer-icon="search"
+      label="Search"
+      v-model="searchTerm"
+      @input="search"
+      clearable
+    >
+    </v-text-field>
   </v-flex>
 </template>
 
@@ -13,24 +15,16 @@
 
   export default {
     mounted() {
-      this.search('ALL')
+      this.search()
     },
     methods: {
-      search(status) {
-        const token = this.$store.getters['auth/getToken']
-        this.$store.dispatch('flight/search', { token, status })
+      search() {
+        this.$store.dispatch('flight/search', {searchTerm:  this.searchTerm } )
       }
     },
     data() {
       return {
-        defaultValue: 'ALL',
-        items: [
-          { text: 'All', value: 'ALL' },
-          { text: 'Active', value: 'ACTIVE' },
-          { text: 'Canceled', value: 'CANCELED' },
-          { text: 'Landed', value: 'LANDED' },
-          { text: 'Scheduled', value: 'SCHEDULED' },
-        ]
+        searchTerm: ''
       }
     }
   }

@@ -22,7 +22,7 @@
               </v-flex>
               <v-flex xs4>
                 <h4>Aircraft Tail Number</h4>
-                <span>{{ flight.aircraft }}</span>
+                <span>{{ flight.aircraft.tailNumber }}</span>
               </v-flex>
               <v-flex xs4>
                 <h4>Status</h4>
@@ -32,21 +32,21 @@
             <v-layout row pa-2>
               <v-flex xs4>
                 <h4>Departure</h4>
-                <span>{{ flight.departure.code }} - {{ flight.departure.city }}</span>
+                <span>{{ flight.departureAirport }}</span>
               </v-flex>
               <v-flex xs4>
-                <h4>Departure Time</h4>
-                <span>{{ flight.departureTime | formatDate }}</span>
+                <h4>Departure Date</h4>
+                <span>{{ flight.departureDate | formatDate }}</span>
               </v-flex>
             </v-layout>
             <v-layout row pa-2>
               <v-flex xs4>
                 <h4>Arrival</h4>
-                <span>{{ flight.arrival.code }} - {{ flight.arrival.city }}</span>
+                <span>{{ flight.arrivalAirport }}</span>
               </v-flex>
               <v-flex xs4>
-                <h4>Scheduled Time</h4>
-                <span>{{ flight.scheduledTime | formatDate }}</span>
+                <h4>Arrival Date</h4>
+                <span>{{ flight.arrivalDate | formatDate }}</span>
               </v-flex>
             </v-layout>
           </v-card-text>
